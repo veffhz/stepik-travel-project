@@ -1,13 +1,9 @@
-import random
-
-from flask import Flask
 from flask import render_template
+from flask import current_app as app
 from werkzeug import exceptions
 
-from data.dataset import title, titles
-from data.dataset import tours, departures
-
-app = Flask(__name__)
+from application.data.dataset import title, titles
+from application.data.dataset import tours, departures
 
 
 @app.route('/')
@@ -39,17 +35,3 @@ def not_found(e):
 @app.errorhandler(exceptions.InternalServerError)
 def server_error(e):
     return render_template("500.html"), e.code
-
-
-@app.template_filter('limit')
-def limit(dictionary, n):
-    return random.sample(dictionary.items(), n)
-
-
-@app.template_filter('split')
-def split(items, key, n):
-    return items.get(key).split()[n]
-
-
-if __name__ == '__main__':
-    app.run()
