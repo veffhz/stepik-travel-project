@@ -1,0 +1,32 @@
+{% extends 'base_nav.html' %}
+
+{% block container %}
+
+<!-- HERO -->
+
+<div class="jumbotron text-center mt-4">
+    <h1 class="display-4">Всякие туры</h1>
+    <p class="lead">{{ titles.subtitle }}</p>
+    <p class="mt-5 w-50 mx-auto">{{ titles.description }}</p>
+</div>
+
+<!-- CARDS -->
+
+<div class="row mt-5" data-test="cards">
+
+    {% for tour_id, tour in tours |limit(6) %}
+    <div class="col-4" data-test="card">
+        <div class="card mb-3">
+            <img src="{{ tour.picture }}" class="card-img-top" width="300" height="200" data-test="picture">
+            <div class="card-body">
+                <h5 class="card-title">{{ tour.country }}: {{ tour.title }}</h5>
+                <p class="card-text">{{ tour.description | truncate(200, false) }}</p>
+                <a href="/tours/{{ tour_id }}" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

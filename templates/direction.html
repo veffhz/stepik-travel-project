@@ -1,0 +1,34 @@
+{% extends 'base_nav.html' %}
+
+{% block container %}
+
+<h1 class="display-5 mt-4">Летим из <span data-test="from">{{ departures | split(direction, 1) }}</span></h1>
+
+{% set nights = tours.values() | map(attribute="nights") | list %}
+{% set prices = tours.values() | map(attribute="price") | list  %}
+
+<p class="mb-4">Найдено <span data-test="tourcount">{{ tours | length }}</span> туров, от <span data-test="pricemin">{{ prices | min }}</span> до <span
+        data-test="pricemax">{{ prices | max }}</span> и от <span data-test="nightsmax">{{ nights | min }} </span> ночей до <span
+        data-test="nightsmax">{{ nights | max }}</span> ночей</p>
+<!-- HERO -->
+
+
+<!-- CARDS -->
+
+<div class="row mt-5" data-test="cards">
+    {% for tour_id, tour in tours.items() %}
+    <div class="col-4" data-test="card">
+        <div class="card mb-3">
+            <img src="{{ tour.picture }}" class="card-img-top" width="300" height="200" data-test="picture">
+            <div class="card-body">
+                <h5 class="card-title">{{ tour.country }}: {{ tour.title }}</h5>
+                <p class="card-text">{{ tour.description | truncate(200, false) }}</p>
+                <a href="/tours/{{ tour_id }}" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
