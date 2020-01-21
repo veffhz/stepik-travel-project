@@ -7,8 +7,8 @@
 {% set nights = tours.values() | map(attribute="nights") | list %}
 {% set prices = tours.values() | map(attribute="price") | list  %}
 
-<p class="mb-4">Найдено <span data-test="tourcount">{{ tours | length }}</span> туров, от <span data-test="pricemin">{{ prices | min }}</span> до <span
-        data-test="pricemax">{{ prices | max }}</span> и от <span data-test="nightsmax">{{ nights | min }} </span> ночей до <span
+<p class="mb-4"><strong>Найдено <span data-test="tourcount">{{ tours | length }}</span> туров</strong>, от <span data-test="pricemin">{{ prices | min | thousand }}</span> до <span
+        data-test="pricemax">{{ prices | max | thousand }}</span> и от <span data-test="nightsmax">{{ nights | min }} </span> ночей до <span
         data-test="nightsmax">{{ nights | max }}</span> ночей</p>
 <!-- HERO -->
 

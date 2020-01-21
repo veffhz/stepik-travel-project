@@ -16,7 +16,7 @@
 
 <div class="mb-4">
     <a href="javascript:showAlert()" id="modalButton" class="btn btn-success btn-lg " data-test="buybutton">Купить тур
-        за <span data-test="price">{{ tour.price }}</span></a>
+        за <span data-test="price"><strong>{{ tour.price | thousand }}</strong></span></a>
 
     <span class="alert alert-success ml-5" id="successAlert" style="display:none;">
             <strong>Успешно!</strong> Вы добавили тур в корзину!</span>
