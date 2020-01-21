@@ -17,11 +17,11 @@
 
 <div class="row mt-5" data-test="cards">
     {% for tour_id, tour in tours.items() %}
-    <div class="col-4" data-test="card">
+    <div class="col-4 d-flex" data-test="card">
         <div class="card mb-3">
             <img src="{{ tour.picture }}" class="card-img-top" width="300" height="200" data-test="picture">
-            <div class="card-body">
-                <h5 class="card-title">{{ tour.country }}: {{ tour.title }}</h5>
+            <div class="card-body flex-column">
+                <h6 class="card-title"><strong>{{ tour.country }}: {{ tour.title }}</strong></h6>
                 <p class="card-text">{{ tour.description | truncate(200, false) }}</p>
                 <a href="/tours/{{ tour_id }}" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
             </div>
