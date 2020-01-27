@@ -14,7 +14,8 @@ def main():
 
 @app.route('/from/<direction>')
 def get_direction(direction):
-    filtered_tours = {k: v for k, v in tours.items() if v['departure'] == direction}
+    filtered_tours = {tour_id: tour for tour_id, tour in tours.items()
+                      if tour['departure'] == direction}
     return render_template('direction.html', title=title,
                            departures=departures,
                            tours=filtered_tours, direction=direction)

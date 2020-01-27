@@ -4,17 +4,17 @@ from flask import current_app as app
 
 
 @app.template_filter('limit')
-def limit(dictionary, n):
-    if len(dictionary) < n:
+def limit(dictionary, quantity):
+    if len(dictionary) < quantity:
         return random.sample(dictionary.items(), len(dictionary))
-    return random.sample(dictionary.items(), n)
+    return random.sample(dictionary.items(), quantity)
 
 
 @app.template_filter('split')
-def split(items, key, n):
+def split(items, key, num):
     item = items.get(key)
     if item:
-        return items.get(key).split()[n]
+        return items.get(key).split()[num]
     else:
         return key
 
