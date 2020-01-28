@@ -14,7 +14,7 @@
 
 <div class="row mt-5" data-test="cards">
 
-    {% for tour_id, tour in tours |limit(6) %}
+    {% for tour_id, tour in tours %}
     <div class="col-4 d-flex" data-test="card">
         <div class="card mb-3">
             <img src="{{ tour.picture }}" class="card-img-top" width="300" height="200" data-test="picture">
