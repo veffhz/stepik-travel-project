@@ -1,13 +1,13 @@
-from flask import current_app as app
+from application import app
 
 
 @app.template_filter('split')
-def split(items, key, num):
-    item = items.get(key)
+def split(items, item_key, num):
+    item = items.get(item_key)
     if item:
-        return items.get(key).split()[num]
+        return items.get(item_key).split()[num]
     else:
-        return key
+        return item_key
 
 
 @app.template_filter('thousand')

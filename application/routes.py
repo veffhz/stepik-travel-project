@@ -1,5 +1,5 @@
 from flask import render_template
-from flask import current_app as app
+from application import app
 from werkzeug import exceptions
 
 from application.data_helper import random_limit
