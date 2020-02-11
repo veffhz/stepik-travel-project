@@ -1,10 +1,10 @@
 from flask import render_template
-from application import app
 from werkzeug import exceptions
 
-from application.data_helper import random_limit
+from application import app
 from application.data.dataset import title, titles
 from application.data.dataset import tours, departures
+from application.data_helper import random_limit, filter_tours
 
 
 @app.route('/')
@@ -16,8 +16,7 @@ def main():
 
 @app.route('/from/<direction>')
 def get_direction(direction):
-    filtered_tours = {tour_id: tour for tour_id, tour in tours.items()
-                      if tour['departure'] == direction}
+    filtered_tours = filter_tours(direction, tours)
     return render_template('direction.html', title=title,
                            departures=departures,
                            tours=filtered_tours, direction=direction)
