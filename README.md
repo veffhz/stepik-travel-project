@@ -1,4 +1,6 @@
-## travel demo project with Flask
+travel demo project with Flask
+==================
+[![Heroku](https://heroku-badge.herokuapp.com/?app=stepik-travel-project&style=flat)](https://stepik-travel-project.herokuapp.com)
 
 ##### features:
  - index page for show random 6 tours
